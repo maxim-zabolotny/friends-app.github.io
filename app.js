@@ -39,11 +39,14 @@ const renderUsers = (arr) => {
     users.innerHTML = user
 }
 
-const initApp = async () => {
-    await getUsers();
-    console.log(allUsers)
-    renderUsers(allUsers);
-  }
+    const findChecked = (el) => {
+        let checked
+        let inputs = document.querySelectorAll('.filter_by-gender_item')
+        for(let input of inputs) {
+            if(input.checked == true) checked = input
+        }
+        return checked
+    }
 
   const sortByInputText = (arr, text) => {
       return arr.filter(({name}) => `${name.first}${name.last}`.toLowerCase().includes(text.toLowerCase()))
@@ -75,20 +78,35 @@ const initApp = async () => {
       })
   }
 
+  const filteredByGender = (arr, el) => {
+      if(el == 'all') return arr
+      return arr.filter(user => user.gender == el)
+      
+  }
+
   const showFilteredUsers = (e) => {
-      console.log(e)
       let elementId = e.target.id
+      let defaultValue = e.target.defaultValue
       let filteredUsers = [...allUsers]
       if(searchInput.value !== '') filteredUsers = sortByInputText(filteredUsers, searchInput.value)
-   
+
       if(elementId === sort_by_name_ascending) filteredUsers = sortByNameAscending(filteredUsers)
       if(elementId === sort_by_name_descending) filteredUsers = sortByNameDescending(filteredUsers)
    
       if(elementId === sort_by_age_ascending) filteredUsers = sortByAgeAscending(filteredUsers)
       if(elementId === sort_by_age_descending) filteredUsers = sortByAgeDescending(filteredUsers)
    
+      let gender = findChecked(filterByGender)
+      if(gender) filteredUsers = filteredByGender(filteredUsers, gender.value)
+        
       renderUsers(filteredUsers)
   }
+
+  const initApp = async () => {
+    await getUsers();
+    renderUsers(allUsers);
+  }
+
   document.addEventListener("DOMContentLoaded", function() {
     initApp();
     sortByAge.addEventListener('click', showFilteredUsers);
