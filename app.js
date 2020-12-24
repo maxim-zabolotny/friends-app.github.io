@@ -2,8 +2,11 @@ const users = document.querySelector('.users')
 const sortByAge = document.querySelector('.sortByAge')
 const sortByName = document.querySelector('.sortByName')
 const searchInput = document.querySelector('.search-input')
+const filterByGender = document.querySelector('.filter_by-gender')
 const sort_by_name_ascending = 'sort_by_name_ascending'
 const sort_by_name_descending = 'sort_by_name_descending'
+const sort_by_age_ascending = 'sort_by_age_ascending'
+const sort_by_age_descending = 'sort_by_age_descending'
 
 
 const url = 'https://randomuser.me/api/?results=30'
@@ -59,12 +62,30 @@ const initApp = async () => {
     })
   }
 
+  const sortByAgeAscending = (arr) => {
+      return arr.sort((a, b) => {
+        if(a.dob.age > b.dob.age) return 1
+        else return -1
+      })
+  }
+  const sortByAgeDescending = (arr) => {
+      return arr.sort((a, b) => {
+          if(a.dob.age < b.dob.age) return 1
+          else return -1
+      })
+  }
+
   const showFilteredUsers = (e) => {
+      console.log(e)
       let elementId = e.target.id
       let filteredUsers = [...allUsers]
       if(searchInput.value !== '') filteredUsers = sortByInputText(filteredUsers, searchInput.value)
-      if(elementId == sort_by_name_ascending) filteredUsers = sortByNameAscending(filteredUsers)
-      if(elementId == sort_by_name_descending) filteredUsers = sortByNameDescending(filteredUsers)
+   
+      if(elementId === sort_by_name_ascending) filteredUsers = sortByNameAscending(filteredUsers)
+      if(elementId === sort_by_name_descending) filteredUsers = sortByNameDescending(filteredUsers)
+   
+      if(elementId === sort_by_age_ascending) filteredUsers = sortByAgeAscending(filteredUsers)
+      if(elementId === sort_by_age_descending) filteredUsers = sortByAgeDescending(filteredUsers)
    
       renderUsers(filteredUsers)
   }
@@ -73,5 +94,5 @@ const initApp = async () => {
     sortByAge.addEventListener('click', showFilteredUsers);
     sortByName.addEventListener('click', showFilteredUsers);
     searchInput.addEventListener('input', showFilteredUsers);
-    // filterGender.addEventListener('click', showFilteredUsers);
+    filterByGender.addEventListener('click', showFilteredUsers);
   })
