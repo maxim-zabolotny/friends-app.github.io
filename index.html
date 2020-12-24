@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Friends App</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h2 class="logo">Friends App</h2>
+        </header>
+        <main class="main">
+            <aside class="aside">
+                <div class="aside-item filter">
+                    <h2 class="h2-title">Filter</h2>
+                    <div class="filter_by-name">
+                        <input type="text" name="search" id="search" placeholder="who are you looking for?" />
+                    </div>
+
+                    <div class="filter_by-gender">
+                        <input type="radio" id="male" class="filter_by-gender_item" /> male
+                        <input type="radio" id="female" class="filter_by-gender_item" /> female
+                        <input type="radio" id="all" class="filter_by-gender_item" /> all
+                    </div>
+
+                </div>
+                <div class="aside-item sorting">
+                    <h2 class="h2-title">Sort</h2>
+                    <div class="sorting_by-name sorting-item">
+                        <h3 class="h3-title">By name</h3>
+                        <div class="sorting_images">
+                            <img src="img/sort-ascending.svg" alt="sort by ascending" class="sort_img" />
+                            <img src="img/sort-descending.svg" alt="sort by descending" class="sort_img" />
+                        </div>
+                    </div>
+                    <div class="sorting_by-age sorting-item">
+                        <h3 class="h3-title">By age</h3>
+                        <div class="sorting_images">
+                            <img src="img/sort-ascending.svg" alt="sort by ascending" class="sort_img" />
+                            <img src="img/sort-descending.svg" alt="sort by descending" class="sort_img" />
+                        </div>
+                    </div>
+                </div>
+
+            </aside>
+            
+                <div class="users">
+                    <div class="user">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="user_logo" class="user_logo" />
+                        <p class="user-name">Anna</p>
+                        <p class="user-age">23 y.o</p>
+                        <p class="user-email">anna.kkgk@gmail.com</p>
+                        <p class="user-phone">777747438</p>
+                    </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
