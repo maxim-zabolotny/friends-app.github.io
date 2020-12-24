@@ -2,6 +2,9 @@ const users = document.querySelector('.users')
 const sortByAge = document.querySelector('.sortByAge')
 const sortByName = document.querySelector('.sortByName')
 const searchInput = document.querySelector('.search-input')
+const sort_by_name_ascending = 'sort_by_name_ascending'
+const sort_by_name_descending = 'sort_by_name_descending'
+
 
 const url = 'https://randomuser.me/api/?results=30'
 let allUsers = []
@@ -43,12 +46,26 @@ const initApp = async () => {
       return arr.filter(({name}) => `${name.first}${name.last}`.toLowerCase().includes(text.toLowerCase()))
   }
 
-  const showFilteredUsers = () => {
+  const sortByNameAscending = (arr) => {
+      return arr.sort((a, b) => {
+          if(a.name.first.toLowerCase() > b.name.first.toLowerCase()) return 1
+          return -1;
+      })
+  }
+  const sortByNameDescending = (arr) => {
+    return arr.sort((a, b) => {
+        if(a.name.first.toLowerCase() < b.name.first.toLowerCase()) return 1
+        return -1;
+    })
+  }
+
+  const showFilteredUsers = (e) => {
+      let elementId = e.target.id
       let filteredUsers = [...allUsers]
-
       if(searchInput.value !== '') filteredUsers = sortByInputText(filteredUsers, searchInput.value)
-
-
+      if(elementId == sort_by_name_ascending) filteredUsers = sortByNameAscending(filteredUsers)
+      if(elementId == sort_by_name_descending) filteredUsers = sortByNameDescending(filteredUsers)
+   
       renderUsers(filteredUsers)
   }
   document.addEventListener("DOMContentLoaded", function() {
