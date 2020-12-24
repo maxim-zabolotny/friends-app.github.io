@@ -19,13 +19,13 @@
                 <div class="aside-item filter">
                     <h2 class="h2-title">Filter</h2>
                     <div class="filter_by-name">
-                        <input type="text" name="search" id="search" placeholder="who are you looking for?" />
+                        <input type="text" class="search-input" name="search" id="search" placeholder="who are you looking for?" />
                     </div>
 
                     <div class="filter_by-gender">
-                        <input type="radio" id="male" class="filter_by-gender_item" /> male
-                        <input type="radio" id="female" class="filter_by-gender_item" /> female
-                        <input type="radio" id="all" class="filter_by-gender_item" /> all
+                        <input type="radio" value="all" name="sort_by-gender" class="filter_by-gender_item" checked/> all
+                        <input type="radio" value="male" name="sort_by-gender" class="filter_by-gender_item" /> male
+                        <input type="radio" value="female" name="sort_by-gender" class="filter_by-gender_item" /> female
                     </div>
 
                 </div>
@@ -33,16 +33,16 @@
                     <h2 class="h2-title">Sort</h2>
                     <div class="sorting_by-name sorting-item">
                         <h3 class="h3-title">By name</h3>
-                        <div class="sorting_images">
-                            <img src="img/sort-ascending.svg" alt="sort by ascending" class="sort_img" />
-                            <img src="img/sort-descending.svg" alt="sort by descending" class="sort_img" />
+                        <div class="sorting_images sortByName">
+                            <img src="img/sort-ascending.svg" alt="sort by ascending" class="sort_img" id="sort_by_name_ascending"/>
+                            <img src="img/sort-descending.svg" alt="sort by descending" class="sort_img" id="sort_by_name_descending"/>
                         </div>
                     </div>
                     <div class="sorting_by-age sorting-item">
                         <h3 class="h3-title">By age</h3>
-                        <div class="sorting_images">
-                            <img src="img/sort-ascending.svg" alt="sort by ascending" class="sort_img" />
-                            <img src="img/sort-descending.svg" alt="sort by descending" class="sort_img" />
+                        <div class="sorting_images sortByAge">
+                            <img src="img/sort-ascending.svg" alt="sort by ascending" class="sort_img" id="sort_by_age_ascending"/>
+                            <img src="img/sort-descending.svg" alt="sort by descending" class="sort_img"  id="sort_by_age_descending"/>
                         </div>
                     </div>
                 </div>

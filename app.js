@@ -1,5 +1,7 @@
 const users = document.querySelector('.users')
-
+const sortByAge = document.querySelector('.sortByAge')
+const sortByName = document.querySelector('.sortByName')
+const searchInput = document.querySelector('.search-input')
 
 const url = 'https://randomuser.me/api/?results=30'
 let allUsers = []
@@ -37,10 +39,22 @@ const initApp = async () => {
     renderUsers(allUsers);
   }
 
+  const sortByInputText = (arr, text) => {
+      return arr.filter(({name}) => `${name.first}${name.last}`.toLowerCase().includes(text.toLowerCase()))
+  }
+
+  const showFilteredUsers = () => {
+      let filteredUsers = [...allUsers]
+
+      if(searchInput.value !== '') filteredUsers = sortByInputText(filteredUsers, searchInput.value)
+
+
+      renderUsers(filteredUsers)
+  }
   document.addEventListener("DOMContentLoaded", function() {
     initApp();
-    // sortName.addEventListener('click', showFilteredUsers);
-    // sortAge.addEventListener('click', showFilteredUsers);
-    // searchInput.addEventListener('input', showFilteredUsers);
+    sortByAge.addEventListener('click', showFilteredUsers);
+    sortByName.addEventListener('click', showFilteredUsers);
+    searchInput.addEventListener('input', showFilteredUsers);
     // filterGender.addEventListener('click', showFilteredUsers);
   })
