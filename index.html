@@ -9,48 +9,82 @@
 </head>
 
 <body>
+    <header>
+        <div>
+            <h1 class="logo">Friends APP</h1>
+        </div>
+    </header>
 
-    <div class="container">
-        <header class="header">
-            <h2 class="logo">Friends App</h2>
-        </header>
-        <main class="main">
-            <aside class="aside">
-                <div class="aside-item filter">
-                    <h2 class="h2-title">Filter</h2>
-                    <div class="filter_by-name">
-                        <input type="text" class="search-input" name="search" id="search" placeholder="who are you looking for?" />
-                    </div>
+    <div class="wrapper">
+        <form class="filters">
+            <div class="filter search-name">
+                <label>
+                    <input class="input-text" placeholder="Find who?" value="" type="search"/>
+                </label>
+            </div>
+            <div class="filter">
+                <h2 class="filter-name">By gender</h2>
+                <label>
+                    <input class="radio-box" type="radio" name="gender" value="all" checked>
+                    <span>
+                    all
+                    </span>
+                </label>
+                <br>
+                <label>
+                    <input class="radio-box" type="radio" name="gender" value="male">
+                    <span>
+                        male
+                    </span>
+                </label>
+                <br>
+                <label>
+                    <input class="radio-box" type="radio" name="gender" value="female">
+                    <span>
+                        female
+                    </span>
+                </label>
+            </div>
 
-                    <div class="filter_by-gender">
-                        <input type="radio" value="all" name="sort_by-gender" class="filter_by-gender_item" checked/> all
-                        <input type="radio" value="male" name="sort_by-gender" class="filter_by-gender_item" /> male
-                        <input type="radio" value="female" name="sort_by-gender" class="filter_by-gender_item" /> female
-                    </div>
+            <div class="filter">
+                <h2 class="filter-name">By name</h2>
+                <label>
+                    <input class="radio-box" type="radio" name="order" value="nameAsc">
+                    <span>
+                        Asc                    </span>
+                </label>
+                <br>
+                <label>
+                    <input class="radio-box" type="radio" name="order" value="nameDesc">
+                    <span>
+                        Desc
+                    </span>
+                </label>
+            </div>
 
-                </div>
-                <div class="aside-item sorting">
-                    <h2 class="h2-title">Sort</h2>
-                    <div class="sorting_by-name sorting-item">
-                        <h3 class="h3-title">By name</h3>
-                        <div class="sorting_images sortByName">
-                            <img src="img/sort-ascending.svg" alt="sort by ascending" class="sort_img" id="sort_by_name_ascending"/>
-                            <img src="img/sort-descending.svg" alt="sort by descending" class="sort_img" id="sort_by_name_descending"/>
-                        </div>
-                    </div>
-                    <div class="sorting_by-age sorting-item">
-                        <h3 class="h3-title">By age</h3>
-                        <div class="sorting_images sortByAge">
-                            <img src="img/sort-ascending.svg" alt="sort by ascending" class="sort_img" id="sort_by_age_ascending"/>
-                            <img src="img/sort-descending.svg" alt="sort by descending" class="sort_img"  id="sort_by_age_descending"/>
-                        </div>
-                    </div>
-                </div>
-
-            </aside>
-            
-                <div class="users"></div>
-        </main>
+            <div class="filter">
+                <h2 class="filter-name">By age</h2>
+                <label>
+                    <input class="radio-box" type="radio" name="order" value="ageAsc">
+                    <span>
+                        Asc
+                    </span>
+                </label>
+                <br>
+                <label>
+                    <input class="radio-box" type="radio" name="order" value="ageDesc">
+                    <span>
+                        Desc
+                    </span>
+                </label>
+            </div>
+            <div class="filter">
+                <label>
+                    <input type="reset" class="reset_button" value="reset" />
+                </label>
+            </div>
+        </form>
+        <div class="frame cards_container"></div>
     </div>
 
     <script src="app.js"></script>
